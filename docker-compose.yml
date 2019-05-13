@@ -1,0 +1,16 @@
+version: "3.5"
+services:
+  db:
+    image: "postgres:11"
+    container_name: "$DB_CONTAINER_NAME"
+    ports:
+      - "$DB_PORT:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /data/postgres
+      POSTGRES_DB: room
+    volumes:
+      - my_dbdata:/var/lib/postgresql/data
+volumes:
+  my_dbdata:
